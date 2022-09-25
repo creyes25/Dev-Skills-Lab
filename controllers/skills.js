@@ -39,6 +39,10 @@ function showSkill(req, res) {
       skill: skill
     })
   })
+  .catch(error => {
+    console.lot(error)
+    res.redirect('/')
+  })
 }
 
 export {

@@ -6,7 +6,8 @@ function index(req, res) {
     res.render('skills', {
       skills: skills
     })
-  }).catch(error => {
+  })
+  .catch(error => {
     console.lot(error)
     res.redirect('/')
   })
@@ -24,10 +25,25 @@ function createSkill(req, res) {
   .then(skill => {
     res.redirect('skills')
   })
+  .catch(error => {
+    console.lot(error)
+    res.redirect('/')
+  })
+}
+
+// display individual skill
+function showSkill(req, res) {
+  Skill.findById(req.params.id)
+  .then(skill => {
+    res.render('skills/show', {
+      skill: skill
+    })
+  })
 }
 
 export {
   index,
   newSkill as new,
-  createSkill as create
+  createSkill as create,
+  showSkill as show,
 }

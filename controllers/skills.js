@@ -23,7 +23,7 @@ function createSkill(req, res) {
   console.log(req.body)
   Skill.create(req.body)
   .then(skill => {
-    res.redirect('skills')
+    res.redirect('/skills')
   })
   .catch(error => {
     console.lot(error)
@@ -45,9 +45,18 @@ function showSkill(req, res) {
   })
 }
 
+function skillDelete(req, res) {
+  console.log(req.params.id)
+  Skill.findByIdAndDelete(req.params.id)
+  .then(skill => {
+    res.redirect('/skills')
+  })
+}
+
 export {
   index,
   newSkill as new,
   createSkill as create,
   showSkill as show,
+  skillDelete as delete,
 }

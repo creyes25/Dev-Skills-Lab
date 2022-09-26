@@ -12,6 +12,8 @@ router.get('/:id', skillsCtrl.show)
 // GET - /skills
 router.post('/', skillsCtrl.create)
 
+router.delete('/:id', skillsCtrl.delete)
+
 
 
 
